@@ -55,3 +55,67 @@ def trier_main(main):
         if main[j] > maxi:
             maxi = main[j]
     main[2] = mini
+
+
+assert L[0] == maxi 
+
+
+def est_421(main):
+    N = [4, 2, 1]
+    V = []     
+    for i in range(3):
+        if main[i] == N[i]:
+            V.append(True)
+    if V == [True, True, True]:
+        return True
+    else:
+        return False
+
+
+def est_brelan(main):
+    if main[0] == main[2]:
+        return True
+
+
+def est_fiche(main):
+    if main[1] == 1 and main[2] == 1:
+        return True
+
+
+def est_suite(main):
+    V = []   
+    testeur = main[0] - 1
+    for i in range(1, len(main)):
+        if main[i] == testeur:
+            V.append(True)
+            testeur = testeur - 1
+    if V == [True, True]:
+        return True
+    else:
+        return False
+
+
+def est_nenette(main):
+    if main == [2, 2, 1]:
+        return True
+    else:
+        return False
+    
+
+def meilleur main(main, main2):
+    if valeur_main(main1) > valeur_main(main2):
+        return 1    
+    elif valeur_main(main1) < valeur_main(main2):
+        return 2    
+    else:
+        return 0                        # si aucune des deux mains est meilleure c'est qu'elles sont identiques donc on retourne 0                      
+
+def choisir_des_a_relancer():
+    n = int(input("Combien de dés voulez-vous relancer ?"))
+    while n <= 3:
+        if n == 3:
+            main = lancer_main()
+            return main
+        elif n == 2:
+            L = []
+            
