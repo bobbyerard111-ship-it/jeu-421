@@ -9,9 +9,3 @@ def afficher_main(main_triée):
   Combinaison : {combinaison_main(main_triée)}
   Valeur : {valeur_main(main_triée)}
   ''')
-
-main = lancer_main()
-print(main)
-main_triée = trier_main(main)
-print(main_triée)
-afficher_main(main_triée)
