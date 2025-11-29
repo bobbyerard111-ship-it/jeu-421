@@ -134,4 +134,4 @@ def relancer_main(main, des_à_relancer):
         main[des_à_relancer[1]] = main(lancer_de)
 
     else:
-        main(des_à_relancer[0]) = main(lancer_de)
+        main[des_à_relancer[0]] = main(lancer_de)
