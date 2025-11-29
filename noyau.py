@@ -110,14 +110,7 @@ def meilleur_main(main1, main2):
     else:
         return 0                      
                    
-def choisir_des_a_relancer():
-    n = int(input("Combien de dés voulez-vous relancer ?"))
-    while n <= 3:
-        if n == 3:
-            main = lancer_main()
-            return main
-        elif n == 2:
-            L = []
+
 def choisir_des_a_relancer():
     des_à_relancer = []
     n = int(input("Combien de dés voulez-vous relancer ?"))
@@ -126,8 +119,7 @@ def choisir_des_a_relancer():
             des_à_relancer = ["1", "2", "3"]
         elif n == 2:
             des_à_relancer.append(int(input("Quel est le premier dé que vous voulez relancer (indiquez la position du dé à relancer) ?")))
-            des_à_relancer.append(int(input("Quel est le second dé que vous voulez relancer (indiquez la position du dé à relancer) ?")))
-            
+            des_à_relancer.append(int(input("Quel est le second dé que vous voulez relancer (indiquez la position du dé à relancer) ?")))   
         else:
               des_à_relancer.append(int(input("Quel dé souhaitez vous relancer (indiquez la position du dé à relancer) ?")))
     return des_à_relancer
