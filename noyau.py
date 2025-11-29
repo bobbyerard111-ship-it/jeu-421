@@ -10,18 +10,19 @@ def lancer_main():
     return main
 
 def combinaison_main(main_triée):
-    if est_421():
+    if est_421(main_triée):
         return 421
-    elif est_fiche():
+    elif est_fiche(main_triée):
         return "Fiche"
-    elif est_suite():
+    elif est_suite(main_triée):
         return "Suite"
-    elif est_nenette():
+    elif est_nenette(main_triée):
         return "Nénette"
     else:
         return "Banal"
 
-def valeur_main(combinaison, main):
+def valeur_main(main):
+    combinaison = combinaison_main(main)
     if combinaison == 421:
         return 8
     elif combinaison == "Fiche":
