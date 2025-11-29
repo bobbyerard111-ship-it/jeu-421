@@ -36,29 +36,28 @@ def valeur_main(combinaison, main):
         return 7
     else: 
         return 1
-
+  
 def trier_main(main):
     """
    Entrée :
         - main : une liste de 3 valeurs représentant un tirage 
    Role : 
         - déterminer la plus petite valeur et la placer en main[2]
-   Sortié: 
+   Sortie: 
     """
-    mini = main[0]
-    maxi = main[0]
-    for i in range(len(main)):
-        if main[i] < mini:
-            mini = main[i]
-    main[0] = maxi
-    for j in range(len(main)):
-        if main[j] > maxi:
-            maxi = main[j]
-    main[2] = mini
-
-
-assert L[0] == maxi 
-
+    if main[0] < main[1]:
+        temp_memory = main[0]
+        main[0] = main[1]
+        main[1] = temp_memory
+    if main[1] < main[2]:
+        temp_memory = main[1]
+        main[1] = main[2]
+        main[2] = temp_memory
+    if main[0] < main[1]:
+        temp_memory = main[0]
+        main[0] = main[1]
+        main[1] = temp_memory
+    return main
 
 def est_421(main):
     N = [4, 2, 1]
@@ -102,13 +101,13 @@ def est_nenette(main):
         return False
     
 
-def meilleur main(main, main2):
+def meilleur_main(main1, main2):
     if valeur_main(main1) > valeur_main(main2):
         return 1    
     elif valeur_main(main1) < valeur_main(main2):
         return 2    
     else:
-        return 0                        # si aucune des deux mains est meilleure c'est qu'elles sont identiques donc on retourne 0                      
+        return 0                      
 
 def choisir_des_a_relancer():
     n = int(input("Combien de dés voulez-vous relancer ?"))
