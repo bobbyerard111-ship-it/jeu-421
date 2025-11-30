@@ -5,38 +5,40 @@ def lancer_de():
     return rd.randint(1, 6)
 
 def lancer_main():
-    main = []
-    for i in range(3):
-        main.append(lancer_de())
-    return main
+    return [lancer_de() for _ in range(3)]
 
-def combinaison_main(main_triée):
-    if est_421(main_triée):
+def combinaison_main(main):
+    m = trier_main(main)
+    if est_421(m):
         return 421
-    elif est_fiche(main_triée):
+    elif est_brelan(m):
+        return "Brelan"
+    elif est_fiche(m):
         return "Fiche"
-    elif est_suite(main_triée):
+    elif est_suite(m):
         return "Suite"
-    elif est_nenette(main_triée):
+    elif est_nenette(m):
         return "Nénette"
     else:
         return "Banal"
 
 def valeur_main(main):
-    combinaison = combinaison_main(main)
+    m = trier_main(main)
+    combinaison = combinaison_main(m)
+    
     if combinaison == 421:
         return 8
+    elif m == [1, 1, 1]:
+        return 7
+    elif est_brelan(m):
+        return m[0]
     elif combinaison == "Fiche":
-        return main[0]
+        return m[0]
     elif combinaison == "Suite":
         return 2
     elif combinaison == "Nénette":
         return 0
-    elif combinaison == "Brelan":
-        return main[0]
-    elif main == [1, 1, 1]:
-        return 7
-    else: 
+    else:
         return 1
   
 def trier_main(main):
@@ -62,48 +64,26 @@ def trier_main(main):
     return main
 
 def est_421(main):
-    N = [4, 2, 1]
-    V = []     
-    for i in range(3):
-        if main[i] == N[i]:
-            V.append(True)
-    if V == [True, True, True]:
-        return True
-    else:
-        return False
+    return main == [4,2,1]
 
 
 def est_brelan(main):
-    if main[0] == main[2]:
-        return True
+    return main[0] == main[1] == main[2]
 
 
 def est_fiche(main):
-    if main[1] == 1 and main[2] == 1:
-        return True
+    return main[1] == 1 and main[2] == 1
 
 
 def est_suite(main):
-    V = []   
-    testeur = main[0] - 1
-    for i in range(1, len(main)):
-        if main[i] == testeur:
-            V.append(True)
-            testeur = testeur - 1
-    if V == [True, True]:
-        return True
-    else:
-        return False
+    return main[0] - 1 == main[1] and main[1] - 1 == main[2]
 
 
 def est_nenette(main):
-    if main == [2, 2, 1]:
-        return True
-    else:
-        return False
+    return main == [2,2,1]
     
 
-def meilleur_main(main1, main2):
+def meilleure_main(main1, main2):
     if valeur_main(main1) > valeur_main(main2):
         return 1    
     elif valeur_main(main1) < valeur_main(main2):
@@ -114,25 +94,10 @@ def meilleur_main(main1, main2):
 
 
 def distribution_des_jetons(main_joueur1, main_joueur2):
-    nombre_jetons1 = valeur_main(main_joueur1)
-    nombre_jetons2 = valeur_main(main_joueur2)
-    if meilleur_main(main_joueur1, main_joueur2) == 1:
-        return nombre_jetons2
-    elif meilleur_main(main_joueur1, main_joueur2) == 2:
-        return nombre_jetons1
-    while meilleur_main(main_joueur1, main_joueur2) == 0:
-        print("Relance, les valeurs des mains sont identiques.")
-        main_joueur1 = lancer_main()
-        afficher_main(main_joueur1)
-        main_joueur2 = lancer_main()
-        afficher_main(main_joueur2)
-        nombre_jetons1 = valeur_main(main_joueur1)
-        nombre_jetons2 = valeur_main(main_joueur2)
-        if meilleur_main(main_joueur1, main_joueur2) == 1:
-            return nombre_jetons2
-        elif meilleur_main(main_joueur1, main_joueur2) == 2:
-            return nombre_jetons1
-        
-main_joueur1 = [3,2,1]
-main_joueur2 = [3,2,1]
-print(distribution_des_jetons(main_joueur1, main_joueur2))
+    gagnant = meilleure_main(main_joueur1, main_joueur2)
+    if gagnant == 0:
+        return 0
+    elif gagnant == 1:
+        return 0
+    else:
+        return valeur_main(main_joueur2)
