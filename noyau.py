@@ -1,6 +1,5 @@
-from saisie import *
-
 import random as rd
+from affichage import *
 
 def lancer_de():
     return rd.randint(1, 6)
@@ -114,5 +113,26 @@ def meilleur_main(main1, main2):
                    
 
 
-def distribution_des_jetons():
-    pass
+def distribution_des_jetons(main_joueur1, main_joueur2):
+    nombre_jetons1 = valeur_main(main_joueur1)
+    nombre_jetons2 = valeur_main(main_joueur2)
+    if meilleur_main(main_joueur1, main_joueur2) == 1:
+        return nombre_jetons2
+    elif meilleur_main(main_joueur1, main_joueur2) == 2:
+        return nombre_jetons1
+    while meilleur_main(main_joueur1, main_joueur2) == 0:
+        print("Relance, les valeurs des mains sont identiques.")
+        main_joueur1 = lancer_main()
+        afficher_main(main_joueur1)
+        main_joueur2 = lancer_main()
+        afficher_main(main_joueur2)
+        nombre_jetons1 = valeur_main(main_joueur1)
+        nombre_jetons2 = valeur_main(main_joueur2)
+        if meilleur_main(main_joueur1, main_joueur2) == 1:
+            return nombre_jetons2
+        elif meilleur_main(main_joueur1, main_joueur2) == 2:
+            return nombre_jetons1
+        
+main_joueur1 = [3,2,1]
+main_joueur2 = [3,2,1]
+print(distribution_des_jetons(main_joueur1, main_joueur2))

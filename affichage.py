@@ -1,4 +1,5 @@
 from noyau import *
+from saisie import *
 
 DE_1 = [
 "┌─────────┐",
@@ -67,7 +68,5 @@ def afficher_main(main):
         print("Wow ! Quelle chance ! C'est la combinaison la plus forte du jeu !")
     if combinaison_main(main) == "Nénette":
         print("Dommage ! C'est la combinaison la plus faible !")
-
-afficher_main([2,2,1])
 
 

@@ -25,6 +25,3 @@ def relancer_main(main, des_à_relancer):
 
     else:
         main[des_à_relancer[0]] = main(lancer_de)
-
-main = relancer_main([5,3,1], ["2", "3"])
-print(main)
