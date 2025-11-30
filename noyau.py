@@ -92,12 +92,35 @@ def meilleure_main(main1, main2):
         return 0                      
                    
 
+def distribution_des_jetons(nb_jetons_total=11):
+    jetons_joueur1 = 0
+    jetons_joueur2 = 0
+    jetons_restants = nb_jetons_total
 
-def distribution_des_jetons(main_joueur1, main_joueur2):
-    gagnant = meilleure_main(main_joueur1, main_joueur2)
-    if gagnant == 0:
-        return 0
-    elif gagnant == 1:
-        return 0
-    else:
-        return valeur_main(main_joueur2)
+    while jetons_restants > 0:
+        main_joueur1 = trier_main(lancer_main())
+        print("Joueur 1:\n")
+        print(main_joueur1)
+        main_joueur2 = trier_main(lancer_main())
+        print("Joueur 2:\n")
+        print(main_joueur2)
+
+        gagnant = meilleure_main(main_joueur1, main_joueur2)
+        if gagnant == 0:
+            print("Egalité ! Aucun jeton distribué.\n")
+        elif gagnant == 1:
+            jetons_a_distribuer = valeur_main(main_joueur1)
+            jetons_recus = min(jetons_a_distribuer, jetons_restants)
+            jetons_joueur2 += jetons_recus
+            jetons_restants -= jetons_recus
+            print(f"Joueur 1 gagne ! Joueur 1 reçoit {jetons_recus} jeton(s).") 
+            print(f"Jetons restants : {jetons_restants}.\n")
+        else:
+            jetons_a_distribuer = valeur_main(main_joueur2)
+            jetons_recus = min(jetons_a_distribuer, jetons_restants)
+            jetons_joueur1 += jetons_recus
+            jetons_restants -= jetons_recus
+            print(f"Joueur 2 gagne ! Joueur 1 reçoit {jetons_recus} jeton(s).")
+            print(f"Jetons restants : {jetons_restants}\n")
+
+    return jetons_joueur1
