@@ -1,6 +1,3 @@
-from noyau import *
-from saisie import *
-
 DE_1 = [
 "┌─────────┐",
 "│         │",
@@ -62,11 +59,14 @@ def afficher_main(main):
     print(de_1[3], de_2[3], de_3[3])
     print(de_1[4], de_2[4], de_3[4])
     print()
-    print(f'Combinaison : {combinaison_main(main)}')
-    print(f'Valeur : {valeur_main(main)}')
-    if combinaison_main(main) == 421:
+    
+    import noyau
+
+    print(f'Combinaison : {noyau.combinaison_main(main)}')
+    print(f'Valeur : {noyau.valeur_main(main)}')
+    if noyau.combinaison_main(main) == 421:
         print("Wow ! Quelle chance ! C'est la combinaison la plus forte du jeu !")
-    if combinaison_main(main) == "Nénette":
+    if noyau.combinaison_main(main) == "Nénette":
         print("Dommage ! C'est la combinaison la plus faible !")
 
 

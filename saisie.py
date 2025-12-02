@@ -20,10 +20,16 @@ def relancer_main(main, des_à_relancer):
         main = lancer_main()
 
     elif len(des_à_relancer) == 2:
-        main[des_à_relancer[0]] = lancer_de()
-        main[des_à_relancer[1]] = lancer_de()
+        m = lancer_de()
+        main[des_à_relancer[0] - 1] = m
+        n = lancer_de()
+        main[des_à_relancer[1] - 1] = n
 
     else:
-        main[des_à_relancer[0]] = lancer_de()
+        y = lancer_de()
+        main[des_à_relancer[0] - 1] = y
 
-relancer_main([3,2,1], ["1"])
+    return main
+
+main = relancer_main([3,2,1], [2])
+print(main)
