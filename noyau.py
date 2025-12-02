@@ -124,7 +124,7 @@ def distribution_des_jetons(nb_jetons_total=11):
             jetons_restants -= jetons_recus
             print(f"Joueur 2 gagne ! Joueur 1 reçoit {jetons_recus} jeton(s).")
             print(f"Jetons restants : {jetons_restants}\n")
-            input()
+            input() 
 
     return jetons_joueur1
 
