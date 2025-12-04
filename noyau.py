@@ -89,7 +89,7 @@ def meilleure_main(main1, main2):
     elif valeur_main(main1) < valeur_main(main2):
         return 2    
     else:
-        return 0                      
+        return 0
                    
 
 def distribution_des_jetons(nb_jetons_total=11):
@@ -128,4 +128,7 @@ def distribution_des_jetons(nb_jetons_total=11):
 
     return jetons_joueur1
 
-distribution_des_jetons()
+def bataille(jetons_joueur1, jetons_joueur2):
+        jetons_joueur2 = 11 - distribution_des_jetons(nb_jetons_total=11)
+        while jetons_joueur1 != 11 and jetons_joueur2 != 11:
+            if meilleure_main(main1, main2) = 0
