@@ -8,7 +8,7 @@ def choix_ia(main_ia):
 
     for valeur in priorite:
         for i in range(len(main_ia)):
-            if des[i] == valeur:
+            if main_ia[i] == valeur:
                 indices.append(i)
 
     return indices
