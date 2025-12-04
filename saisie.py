@@ -1,6 +1,11 @@
 from noyau import *
 
 def choisir_des_a_relancer():
+    """
+    Entrée: aucune
+    Sortie: liste des positions des dés à relancer 
+    But: demander au joueur quels dés il souhaite relancer
+    """
     des_à_relancer = []
     n = int(input("Combien de dés voulez-vous relancer ?"))
     while n > 3:
@@ -16,6 +21,11 @@ def choisir_des_a_relancer():
 
 
 def relancer_main(main, des_à_relancer):
+    """
+    Entrée: la main et la liste des positions des dés à relancer (des_à_relancer)
+    Sortie: la main mise à jour après que le joueur est choisi ou pas de relance
+    But: relancer les dés choisis par le joueur et mettre à jour sa main 
+    """
     if len(des_à_relancer) == 3:
         main = lancer_main()
 
