@@ -2,12 +2,31 @@ import random as rd
 from affichage import *
 
 def lancer_de():
+    """ 
+    Entrée: aucune
+    Sortie: un entier entre 1 et 6
+    But:  générer et retourner un entier aléatoire compris entre 1 et 6
+    """
+
     return rd.randint(1, 6)
 
 def lancer_main():
+    """ 
+    Entrée: aucune
+    Sortie: une liste de 3 entiers qu'on nomme "main" entre 1 et 6
+    But: créer et retourner une main composÃ©e de 3 résultats de lancer_de()
+    """
+
     return [lancer_de() for _ in range(3)]
 
 def combinaison_main(main):
+    """
+    Entrée: la main générée par la fonction lancer_main() 
+    Sortie:  Une chaine de caractère qui indique la nature de la combinaison :
+    "421"; "brelan"; "fiche"; "suite"; "nénette"; "banal"
+    But: Déterminer et retourner la nature de la combinaison de la main
+    """
+
     m = trier_main(main)
     if est_421(m):
         return 421
@@ -23,6 +42,12 @@ def combinaison_main(main):
         return "Banal"
 
 def valeur_main(main):
+    """
+    Entrée: la main générée par la fonction lancer_main() 
+    Sortie: la valeur de la main (un entier), c'est a dire le nombre de jontons qui correspond en suivant les règles du 421 
+    But: retourner la valeur numérique qui permet de comparer les mains entre elles ou de gérer la redistribution des jetons.
+    """
+
     m = trier_main(main)
     combinaison = combinaison_main(m)
     
@@ -43,11 +68,9 @@ def valeur_main(main):
   
 def trier_main(main):
     """
-   Entrée :
-        - main : une liste de 3 valeurs représentant un tirage 
-   Role : 
-        - déterminer la plus petite valeur et la placer en main[2]
-   Sortie: 
+    Entrée: une liste de 3 valeurs représentant la main
+    Sortie: la même main triée dans l'ordre décroissant
+    But: organiser les dés pour faciliter les vérifications
     """
     if main[0] < main[1]:
         temp_memory = main[0]
@@ -64,26 +87,57 @@ def trier_main(main):
     return main
 
 def est_421(main):
+    """
+    Entrée: une main triée
+    Sortie: True ou False
+    But: vérifier si la main correspond à 4-2-1
+    """
     return main == [4,2,1]
 
 
 def est_brelan(main):
+    """
+    Entrée: une main triée
+    Sortie: True ou False
+    But: vérifier si les trois dés sont identiques
+    """
     return main[0] == main[1] == main[2]
 
 
 def est_fiche(main):
+    """
+    Entrée: une main triée
+    Sortie: True ou False
+    But: vérifier si la main contient deux 1
+    """
     return main[1] == 1 and main[2] == 1
 
 
 def est_suite(main):
+    """
+    Entrée: une main triée
+    Sortie: True ou False
+    But: vérifier si la main forme une suite 
+    """
     return main[0] - 1 == main[1] and main[1] - 1 == main[2]
 
 
 def est_nenette(main):
+    """
+    Entrée: une main triée
+    Sortie: True ou False
+    But: vérifier si la main est 2-2-1
+    """
     return main == [2,2,1]
     
 
 def meilleure_main(main1, main2):
+    """
+    Entrée: deux mains triées
+    Sortie: 1 si main1 gagne, 2 si main2 gagne, 0 si égalité
+    But: comparer les deux mains et déterminer le vainqueur
+    """
+
     if valeur_main(main1) > valeur_main(main2):
         return 1    
     elif valeur_main(main1) < valeur_main(main2):
@@ -93,6 +147,11 @@ def meilleure_main(main1, main2):
                    
 
 def distribution_des_jetons(nb_jetons_total=11):
+    """
+    Entrée: nombre total de jetons à distribuer (11)
+    Sortie: nombre de jetons gagnés par le joueur 1
+    But: jouer des manches, comparer les mains et distribuer les jetons jusqu’à épuisement
+    """
     jetons_joueur1 = 0
     jetons_joueur2 = 0
     jetons_restants = nb_jetons_total
