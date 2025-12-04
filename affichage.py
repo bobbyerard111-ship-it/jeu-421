@@ -1,5 +1,4 @@
 from noyau import *
-from saisie import *
 
 # Représentations graphiques des dés (de 1 à 6)
 DE_1 = [
@@ -68,7 +67,8 @@ def afficher_main(main):
     print(de_1[2], de_2[2], de_3[2])
     print(de_1[3], de_2[3], de_3[3])
     print(de_1[4], de_2[4], de_3[4])
-    print()
+    print() 
+
     print(f'Combinaison : {combinaison_main(main)}')
     print(f'Valeur : {valeur_main(main)}')
     if combinaison_main(main) == 421:
