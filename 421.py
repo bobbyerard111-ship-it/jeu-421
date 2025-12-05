@@ -46,6 +46,17 @@ jetons_joueur1 = distribution_des_jetons(afficher = False)
 print(jetons_joueur1)
 
 def bataille(jetons_joueur1, jetons_joueur2):
-        jetons_joueur2 = 11 - jetons_joueur1
-        while jetons_joueur1 != 11 and jetons_joueur2 != 11:
-            pass
+    if distribution_des_jetons(nb_jetons_total=11) == 11:
+        return 1
+    if distribution_des_jetons(nb_jetons_total=11) == 0:
+        return 2
+    while jetons_joueur1 != 11 and jetons_joueur2 != 11:
+            jetons_joueur2 = 11 - distribution_des_jetons(nb_jetons_total=11)
+            jetons_joueur1 = distribution_des_jetons(afficher = False)
+            print(jetons_joueur1)
+            if jetons_joueur1 == 11:
+               grand_vainqueur = 1
+            elif jetons_joueur2 == 11:
+               grand_vainqueur = 2
+        
+    return grand_vainqueur                     #pt il vaut mieux que ce soit un return 1 ou 2 dans la boucle plutot que de mettre dans une variable que l'on return dans ce cas la pas besoin de boucle while ou a modifier et aussi faudrait voir si ca correspond au return demandé
