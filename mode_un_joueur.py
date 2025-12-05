@@ -2,7 +2,7 @@ from noyau import *
 from saisie import *
 from affichage import *
 
-def recommend_keep_simple(main_ia):
+def choix_ia(main_ia):
 
     kept_indices = []
     c1 = 0
@@ -76,6 +76,6 @@ def recommend_keep_simple(main_ia):
             garder_indices = []
     garder_indices = []
     i = 0
-    while i < len(kept_indices):
+    while i < len(garder_indices):
         garder_indices = garder_indices + [main_ia[kept_indices[i]]]
         i = i + 1
