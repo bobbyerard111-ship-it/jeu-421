@@ -28,23 +28,33 @@ def distribution_des_jetons(nb_jetons_total=11, afficher=True):
                 print("Egalité ! Aucun jeton distribué.\n")
                 input()
         elif gagnant == 1:
-            jetons_a_distribuer = valeur_main(main_joueur1)
-            jetons_recus = min(jetons_a_distribuer, jetons_restants)
-            jetons_joueur2 += jetons_recus
-            jetons_restants -= jetons_recus
-            if afficher:
-                print(f"Joueur 1 gagne ! Joueur 2 reçoit {jetons_recus} jeton(s).") 
-                print(f"Jetons restants : {jetons_restants}.\n")
-                input()
+            if valeur_main(main_joueur1) == valeur_main(main_joueur2):
+                if afficher:
+                    print("Egalité ! Aucun jeton distribué.\n")
+                    input()
+            else:
+                jetons_a_distribuer = valeur_main(main_joueur1)
+                jetons_recus = min(jetons_a_distribuer, jetons_restants)
+                jetons_joueur2 += jetons_recus
+                jetons_restants -= jetons_recus
+                if afficher:
+                    print(f"Joueur 1 gagne ! Joueur 2 reçoit {jetons_recus} jeton(s).") 
+                    print(f"Jetons restants : {jetons_restants}.\n")
+                    input()
         else:
-            jetons_a_distribuer = valeur_main(main_joueur2)
-            jetons_recus = min(jetons_a_distribuer, jetons_restants)
-            jetons_joueur1 += jetons_recus
-            jetons_restants -= jetons_recus
-            if afficher:
-                print(f"Joueur 2 gagne ! Joueur 1 reçoit {jetons_recus} jeton(s).")
-                print(f"Jetons restants : {jetons_restants}\n")
-                input()
+            if valeur_main(main_joueur1) == valeur_main(main_joueur2):
+                if afficher:
+                    print("Egalité ! Aucun jeton distribué.\n")
+                    input()
+            else:
+                jetons_a_distribuer = valeur_main(main_joueur2)
+                jetons_recus = min(jetons_a_distribuer, jetons_restants)
+                jetons_joueur1 += jetons_recus
+                jetons_restants -= jetons_recus
+                if afficher:
+                    print(f"Joueur 2 gagne ! Joueur 1 reçoit {jetons_recus} jeton(s).")
+                    print(f"Jetons restants : {jetons_restants}\n")
+                    input()
 
     return jetons_joueur1
 
