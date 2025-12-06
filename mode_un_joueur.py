@@ -4,7 +4,7 @@ from affichage import *
 
 def choix_ia(main_ia):
 
-    kept_indices = []
+    garder_indices = []
     c1 = 0
     c2 = 0
     c4 = 0
@@ -77,5 +77,7 @@ def choix_ia(main_ia):
     garder_indices = []
     i = 0
     while i < len(garder_indices):
-        garder_indices = garder_indices + [main_ia[kept_indices[i]]]
+        garder_indices = garder_indices + [main_ia[garder_indices[i]]]
         i = i + 1
+
+    return garder_indices
