@@ -1,5 +1,4 @@
 import random as rd
-from affichage import *
 
 def lancer_de():
     """ 
