@@ -131,6 +131,7 @@ def est_nenette(main):
     return main == [2,2,1]
     
 
+
 def meilleure_main(main1, main2):
     """
     Entrée: deux mains triées
@@ -143,4 +144,9 @@ def meilleure_main(main1, main2):
     elif valeur_main(main1) < valeur_main(main2):
         return 2    
     else:
-        return 0                      
+        for i in range(3):
+            if main1[i] > main2[i]:
+                return 1
+            elif main1[i] < main2[i]:
+                return 2
+        return 0
