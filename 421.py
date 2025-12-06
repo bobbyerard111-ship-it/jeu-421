@@ -48,14 +48,11 @@ def distribution_des_jetons(nb_jetons_total=11, afficher=True):
 
     return jetons_joueur1
 
-jetons_joueur1 = distribution_des_jetons(afficher = False)
-print(jetons_joueur1)
-
 def bataille(jetons_joueur1, jetons_joueur2):
-    if distribution_des_jetons(nb_jetons_total=11) == 11:
-        return 1
-    if distribution_des_jetons(nb_jetons_total=11) == 0:
+    if distribution_des_jetons(nb_jetons_total=11, afficher=False) == 11:
         return 2
+    if distribution_des_jetons(nb_jetons_total=11, afficher=False) == 0:
+        return 1
     while jetons_joueur1 != 11 and jetons_joueur2 != 11:
             jetons_joueur2 = 11 - distribution_des_jetons(nb_jetons_total=11)
             jetons_joueur1 = distribution_des_jetons(afficher = False)
