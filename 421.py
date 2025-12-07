@@ -60,20 +60,45 @@ def distribution_des_jetons(nb_jetons_total=11, afficher=True):
 
 
 def bataille(jetons_joueur1, jetons_joueur2):
-    if distribution_des_jetons(nb_jetons_total=11, afficher=False) == 11:
-        return 2
-    if distribution_des_jetons(nb_jetons_total=11, afficher=False) == 0:
-        return 1
-    while jetons_joueur1 != 11 and jetons_joueur2 != 11:
-            jetons_joueur2 = 11 - distribution_des_jetons(nb_jetons_total=11)
-            jetons_joueur1 = distribution_des_jetons(afficher = False)
-            print(jetons_joueur1)
-            if jetons_joueur1 == 11:
-               grand_vainqueur = 1
-            elif jetons_joueur2 == 11:
-               grand_vainqueur = 2
+    """
+    Entrée: nombre de jetons du joueur 1 et du joueur 2 après la phase de distribution
+    Sortie: numéro du joueur vainqueur (1 ou 2)
+    But: dérouler la phase de bataille jusqu'à ce qu'un joueur n'ait plus de jetons
+    """
+    joueur_commence = 1
+    
+    while jetons_joueur1 > 0 and jetons_joueur2 > 0:
+        print(f"\n--- Manche: Joueur 1 ({jetons_joueur1} jetons) vs Joueur 2 ({jetons_joueur2} jetons) ---\n")
         
-    return grand_vainqueur          #pt il vaut mieux que ce soit un return 1 ou 2 dans la boucle plutot que de mettre dans une variable que l'on return dans ce cas la pas besoin de boucle while ou a modifier et aussi faudrait voir si ca correspond au return demandé
+        print("Au tour du Joueur 1:")
+        main_joueur1 = jouer_tour()
+        
+        print("Au tour du Joueur 2:")
+        main_joueur2 = jouer_tour()
+        
+        gagnant = meilleure_main(main_joueur1, main_joueur2)
+        
+        if gagnant == 1:
+            jetons_a_perdre = valeur_main(main_joueur1)
+            jetons_recus = min(jetons_a_perdre, jetons_joueur2)
+            jetons_joueur2 -= jetons_recus
+            jetons_joueur1 += jetons_recus
+            print(f"\nJoueur 1 gagne ! Joueur 2 perd {jetons_recus} jeton(s).")
+            joueur_commence = 2
+        elif gagnant == 2:
+            jetons_a_perdre = valeur_main(main_joueur2)
+            jetons_recus = min(jetons_a_perdre, jetons_joueur1)
+            jetons_joueur1 -= jetons_recus
+            jetons_joueur2 += jetons_recus
+            print(f"\nJoueur 2 gagne ! Joueur 1 perd {jetons_recus} jeton(s).")
+            joueur_commence = 1
+        else:
+            print("\nÉgalité ! Aucun jeton distribué.")
+    
+    if jetons_joueur1 == 0:
+        return 1
+    else:
+        return 2
 
 
 def jouer_tour():
