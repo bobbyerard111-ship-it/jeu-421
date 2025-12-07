@@ -58,6 +58,7 @@ def distribution_des_jetons(nb_jetons_total=11, afficher=True):
 
     return jetons_joueur1
 
+
 def bataille(jetons_joueur1, jetons_joueur2):
     if distribution_des_jetons(nb_jetons_total=11, afficher=False) == 11:
         return 2
@@ -72,7 +73,8 @@ def bataille(jetons_joueur1, jetons_joueur2):
             elif jetons_joueur2 == 11:
                grand_vainqueur = 2
         
-    return grand_vainqueur                     #pt il vaut mieux que ce soit un return 1 ou 2 dans la boucle plutot que de mettre dans une variable que l'on return dans ce cas la pas besoin de boucle while ou a modifier et aussi faudrait voir si ca correspond au return demandé
+    return grand_vainqueur          #pt il vaut mieux que ce soit un return 1 ou 2 dans la boucle plutot que de mettre dans une variable que l'on return dans ce cas la pas besoin de boucle while ou a modifier et aussi faudrait voir si ca correspond au return demandé
+
 
 def jouer_tour():
     """
