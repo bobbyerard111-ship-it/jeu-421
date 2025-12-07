@@ -19,7 +19,7 @@ def choix_ia(main_ia):
         return []  # Ne rien relancer - Suite (1-2-3, 2-3-4, etc)
     
     if est_fiche(main_triee):
-        return []  # Fiche (deux dés identiques) = assez bon, on garde
+        return []  # Fiche (deux dés 1 identiques) = assez bon, on garde
     
     # ÉTAPE 2: Logique pour améliorer la main
     
