@@ -4,8 +4,8 @@ from affichage import *
 
 def choix_ia(main_ia):
     """
-    Décide quels dés l'IA doit relancer pour obtenir la meilleure main.
-    Retourne une liste d'indices (0, 1, 2) des dés à relancer.
+    Entrée : main_ia, une liste de trois entiers représentant les dés de l'IA.
+    Sortie : indices_a_relancer, une liste d'entiers représentant les indices des dés à relancer.
     """
     main_triee = trier_main(main_ia)
 
