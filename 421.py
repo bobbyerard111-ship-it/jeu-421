@@ -124,3 +124,10 @@ def jouer_tour():
             relances_restantes -= 1
 
     return main
+
+def jouer():
+    jetons_joueur1 = distribution_des_jetons(afficher=True)
+    jetons_joueur2 = 11 - jetons_joueur1
+
+    vainqueur = bataille(jetons_joueur1, jetons_joueur2)
+    print(f"\nLe joueur {vainqueur} a gagné !")
