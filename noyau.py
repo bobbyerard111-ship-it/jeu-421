@@ -6,8 +6,8 @@ def lancer_de():
     Sortie: un entier entre 1 et 6
     But:  générer et retourner un entier aléatoire compris entre 1 et 6
     """
-
     return rd.randint(1, 6)
+
 
 def lancer_main():
     """ 
@@ -15,8 +15,8 @@ def lancer_main():
     Sortie: une liste de 3 entiers qu'on nomme "main" entre 1 et 6
     But: créer et retourner une main composÃ©e de 3 résultats de lancer_de()
     """
-
     return [lancer_de() for _ in range(3)]
+
 
 def combinaison_main(main):
     """
@@ -25,7 +25,6 @@ def combinaison_main(main):
     "421"; "brelan"; "fiche"; "suite"; "nénette"; "banal"
     But: Déterminer et retourner la nature de la combinaison de la main
     """
-
     m = trier_main(main)
     if est_421(m):
         return 421
@@ -40,13 +39,13 @@ def combinaison_main(main):
     else:
         return "Banal"
 
+
 def valeur_main(main):
     """
     Entrée: la main générée par la fonction lancer_main() 
     Sortie: la valeur de la main (un entier), c'est a dire le nombre de jontons qui correspond en suivant les règles du 421 
     But: retourner la valeur numérique qui permet de comparer les mains entre elles ou de gérer la redistribution des jetons.
     """
-
     m = trier_main(main)
     combinaison = combinaison_main(m)
     
@@ -65,6 +64,7 @@ def valeur_main(main):
     else:
         return 1
   
+
 def trier_main(main):
     """
     Entrée: une liste de 3 valeurs représentant la main
@@ -130,14 +130,12 @@ def est_nenette(main):
     return main == [2,2,1]
     
 
-
 def meilleure_main(main1, main2):
     """
     Entrée: deux mains triées
     Sortie: 1 si main1 gagne, 2 si main2 gagne, 0 si égalité
     But: comparer les deux mains et déterminer le vainqueur
     """
-
     if valeur_main(main1) > valeur_main(main2):
         return 1    
     elif valeur_main(main1) < valeur_main(main2):
