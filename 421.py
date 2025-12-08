@@ -131,3 +131,6 @@ def jouer():
 
     vainqueur = bataille(jetons_joueur1, jetons_joueur2)
     print(f"\nLe joueur {vainqueur} a gagné !")
+
+
+jouer()

@@ -1,26 +1,80 @@
 from noyau import *
 
+def lire_entier():
+    valide = False
+    while valide == False:
+        s = input()
+        valide = True
+        
+        if len(s) == 0:
+            valide = False
+        else:
+            i = 0
+            if s[0] == "-":
+                if len(s) == 1:
+                    valide = False
+                else:
+                    i = 1
+            
+            while i < len(s) and valide == True:
+                if s[i] < "0" or s[i] > "9":
+                    valide = False
+                i += 1
+        
+        if valide == False:
+            print("Veuillez entrer un nombre entier : ")
+
+    return int(s)
 def choisir_des_a_relancer():
-    """
-    Entrée: aucune
-    Sortie: liste des positions des dés à relancer 
-    But: demander au joueur quels dés il souhaite relancer
-    """
     des_a_relancer = []
-    n = int(input("Combien de dés voulez-vous relancer (0 si vous ne souhaitez ne rien relancer)?"))
-    while n > 3:
-        n = int(input("Veuillez saisir le nombre de dés à relancer (3 au maximum) !"))
+
+    print("Combien de dés voulez-vous relancer (0 à 3) ?")
+    n = lire_entier()
+
+    valide = False
+    while valide == False:
+        if n >= 0 and n <= 3:
+            valide = True
+        else:
+            print("Veuillez entrer un nombre entre 0 et 3 : ")
+            n = lire_entier()
+
     if n == 3:
         des_a_relancer = [1, 2, 3]
-    elif n == 2:
-        while des_a_relancer[0] not in [1, 2, 3] or des_a_relancer[1] not in [1, 2, 3] or len(des_a_relancer) != 2:
-            des_a_relancer.append(int(input("Quel est le premier dé que vous voulez relancer (indiquez la position du dé à relancer (première position : 1)) ?")))
-            des_a_relancer.append(int(input("Quel est le second dé que vous voulez relancer (indiquez la position du dé à relancer (première position : 1)) ?")))   
-    elif n == 1:
-        while des_a_relancer[0] not in [1, 2, 3] or len(des_a_relancer) != 1:
-            des_a_relancer.append(int(input("Quel dé souhaitez vous relancer (indiquez la position du dé à relancer (première position : 1)) ?")))
-    else:
-        des_a_relancer = []
+
+    if n == 2:
+        print("Premier dé à relancer (1, 2 ou 3) :")
+        m = lire_entier()
+        print("Deuxième dé à relancer (1, 2 ou 3) :")
+        y = lire_entier()
+
+        valide = False
+        while valide == False:
+            if (m in [1, 2, 3]) and (y in [1, 2, 3]) and (m != y):
+                valide = True
+            else:
+                print("Positions invalides !")
+                print("Premier dé :")
+                m = lire_entier()
+                print("Deuxième dé :")
+                y = lire_entier()
+
+        des_a_relancer = [m, y]
+
+    if n == 1:
+        print("Quel dé souhaitez vous relancer (1, 2 ou 3) ?")
+        x = lire_entier()
+
+        valide = False
+        while valide == False:
+            if x in [1, 2, 3]:
+                valide = True
+            else:
+                print("Position invalide ! Entrez 1, 2 ou 3 : ")
+                x = lire_entier()
+
+        des_a_relancer = [x]
+
     return des_a_relancer
 
 
