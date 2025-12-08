@@ -126,6 +126,11 @@ def jouer_tour():
     return main
 
 def jouer():
+    """
+    Entrée: aucune 
+    Sortie: aucune mais affiche le gagnant
+    But: distribuer les jetons aux joueurs, lancer la bataille et afficher le vainqueur
+    """
     jetons_joueur1 = distribution_des_jetons(afficher=True)
     jetons_joueur2 = 11 - jetons_joueur1
 
