@@ -69,13 +69,25 @@ def bataille(jetons_joueur1, jetons_joueur2):
     joueur_commence = 1
     
     while jetons_joueur1 > 0 and jetons_joueur2 > 0:
-        print(f"\n--- Manche: Joueur 1 ({jetons_joueur1} jetons) vs Joueur 2 ({jetons_joueur2} jetons) ---\n")
+
+        if joueur_commence == 1:
+            print(f"\n--- Manche: Joueur 1 ({jetons_joueur1} jetons) vs Joueur 2 ({jetons_joueur2} jetons) ---\n")
+            
+            print("Au tour du Joueur 1:")
+            main_joueur1 = jouer_tour()
+            
+            print("Au tour du Joueur 2:")
+            main_joueur2 = jouer_tour()
         
-        print("Au tour du Joueur 1:")
-        main_joueur1 = jouer_tour()
-        
-        print("Au tour du Joueur 2:")
-        main_joueur2 = jouer_tour()
+        if joueur_commence == 2:
+            print(f"\n--- Manche: Joueur 2 ({jetons_joueur2} jetons) vs Joueur 1 ({jetons_joueur1} jetons) ---\n")
+            
+            print("Au tour du Joueur 2:")
+            main_joueur2 = jouer_tour()
+            
+            print("Au tour du Joueur 1:")
+            main_joueur1 = jouer_tour()
+
         
         gagnant = meilleure_main(main_joueur1, main_joueur2)
         
@@ -84,14 +96,14 @@ def bataille(jetons_joueur1, jetons_joueur2):
             jetons_recus = min(jetons_a_perdre, jetons_joueur2)
             jetons_joueur2 += jetons_recus
             jetons_joueur1 -= jetons_recus
-            print(f"\nJoueur 1 gagne ! Joueur 2 perd {jetons_recus} jeton(s).")
+            print(f"\nJoueur 1 gagne ! Joueur 1 perd {jetons_recus} jeton(s).")
             joueur_commence = 2
         elif gagnant == 2:
             jetons_a_perdre = valeur_main(main_joueur2)
             jetons_recus = min(jetons_a_perdre, jetons_joueur1)
             jetons_joueur1 += jetons_recus
             jetons_joueur2 -= jetons_recus
-            print(f"\nJoueur 2 gagne ! Joueur 1 perd {jetons_recus} jeton(s).")
+            print(f"\nJoueur 2 gagne ! Joueur 2 perd {jetons_recus} jeton(s).")
             joueur_commence = 1
         else:
             print("\nÉgalité ! Aucun jeton distribué.")
@@ -142,21 +154,35 @@ def bataille_ia(jetons_joueur1, jetons_ia):
     joueur_commence = 1
     
     while jetons_joueur1 > 0 and jetons_ia > 0:
-        print(f"\n--- Manche: Joueur 1 ({jetons_joueur1} jetons) vs Ordinateur ({jetons_ia} jetons) ---\n")
-        
-        print("Au tour du Joueur 1:")
-        main_joueur1 = jouer_tour()
-        
-        print(f"--- Manche: Ordinateur ({jetons_ia} jetons) vs Joueur 1 ({jetons_joueur1} jetons) ---\n")
-        main_ia = trier_main(lancer_main())
-        print("Main de l'Ordinateur:")
-        afficher_main_ia(main_ia)
-        input()
-        relancer_main(main_ia, choix_ia(main_ia))
-        afficher_main_ia(main_ia)
-        input()
-        relancer_main(main_ia, choix_ia(main_ia))
-        afficher_main_ia(main_ia)
+        if joueur_commence == 1:
+            print(f"\n--- Manche: Joueur 1 ({jetons_joueur1} jetons) vs Ordinateur ({jetons_ia} jetons) ---\n")
+            print("Au tour du Joueur 1:")
+            main_joueur1 = jouer_tour()
+
+            print("Au tour de l'Ordinateur:\n")
+            main_ia = trier_main(lancer_main())
+            print("Main de l'Ordinateur:")
+            afficher_main_ia(trier_main(main_ia))
+            input()
+            relancer_main(main_ia, choix_ia(main_ia))
+            afficher_main_ia(trier_main(main_ia))
+            input()
+            relancer_main(main_ia, choix_ia(main_ia))
+            afficher_main_ia(trier_main(main_ia))
+        if joueur_commence == 2:
+            print(f"--- Manche: Ordinateur ({jetons_ia} jetons) vs Joueur 1 ({jetons_joueur1} jetons) ---\n")
+            main_ia = trier_main(lancer_main())
+            print("Main de l'Ordinateur:")
+            afficher_main_ia(trier_main(main_ia))
+            input()
+            relancer_main(main_ia, choix_ia(main_ia))
+            afficher_main_ia(trier_main(main_ia))
+            input()
+            relancer_main(main_ia, choix_ia(main_ia))
+            afficher_main_ia(trier_main(main_ia))
+
+            print("Au tour du Joueur 1:")
+            main_joueur1 = jouer_tour()
 
         gagnant = meilleure_main(main_joueur1, main_ia)
         
