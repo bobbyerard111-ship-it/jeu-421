@@ -33,7 +33,7 @@ def choix_ia(main_ia):
                 indices_a_relancer = []
                 for k in range(3):
                     if k != i and k != j:
-                        indices_a_relancer.append(k)
+                        indices_a_relancer.append(k+1)
                 return indices_a_relancer
             j = j + 1
         i = i + 1
@@ -63,9 +63,11 @@ def choix_ia(main_ia):
         indices_a_relancer = []
         for k in range(3):
             if k != meilleur_i and k != deuxieme_i:
-                indices_a_relancer.append(k)
+                indices_a_relancer.append(k+1)
         return indices_a_relancer
     
     # Stratégie 3: Si tous les dés sont petits (< 4), on relance tout pour avoir une chance
 
-    return [0, 1, 2]
+    return [1, 2, 3]
+
+print(choix_ia([6,4,2]))
