@@ -69,5 +69,3 @@ def choix_ia(main_ia):
     # Stratégie 3: Si tous les dés sont petits (< 4), on relance tout pour avoir une chance
 
     return [1, 2, 3]
-
-print(choix_ia([6,4,2]))
