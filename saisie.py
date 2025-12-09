@@ -1,6 +1,11 @@
 from noyau import *
 
 def lire_entier():
+    """
+    Entrée: aucune
+    Sortie: l’entier s , une fois validé par le code
+    But: Vérifier l'entier entrée pour forcer la saisie d’un nombre entier
+    """
     valide = False
     while valide == False:
         s = input()
@@ -25,9 +30,14 @@ def lire_entier():
             print("Veuillez entrer un nombre entier : ")
 
     return int(s)
-def choisir_des_a_relancer():
-    des_a_relancer = []
 
+
+def choisir_des_a_relancer():
+    """
+    Entrée: aucune
+    Sortie: une liste avec les numéros des dés à relancer choisi par le joueur
+    But: demander à l’utilisateur quels dés (1 à 3) il veut relancer.
+    """
     print("Combien de dés voulez-vous relancer (0 à 3) ?")
     n = lire_entier()
 
@@ -38,6 +48,9 @@ def choisir_des_a_relancer():
         else:
             print("Veuillez entrer un nombre entre 0 et 3 : ")
             n = lire_entier()
+
+    if n == 0:
+            return []
 
     if n == 3:
         des_a_relancer = [1, 2, 3]
