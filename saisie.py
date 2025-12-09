@@ -7,27 +7,28 @@ def lire_entier():
     But: vérifier l'entier entrée pour forcer la saisie d'un entier 
     """
     valide = False
-    while valide == False:
+    while not valide:
         s = input()
+
+        # On considère la saisie valide au départ
         valide = True
-        
+
+        # Si la chaîne est vide, la saisie n'est pas valide
         if len(s) == 0:
             valide = False
         else:
             i = 0
-            if s[0] == "-":
-                if len(s) == 1:
-                    valide = False
-                else:
-                    i = 1
-            
+
             while i < len(s) and valide == True:
-                if s[i] < "0" or s[i] > "9":
+                # Si le caractère n'est pas un chiffre ('0' à '9'), la saisie devient invalide
+                if s[i] < '0' or s[i] > '9':
                     valide = False
                 i += 1
-        
-        if valide == False:
+
+        if not valide:
             print("Veuillez entrer un nombre entier : ")
+
+    return int(s)
 
     
 def choisir_des_a_relancer():

@@ -1,7 +1,7 @@
 # <p align="center">Projet 421 – README</p>
 
 ## <u>Auteurs: </u>
-- Gabriel Astrued
+- Gabriel Assuied
 - Elsa Lelouch
 - Joseph Colonna d'Istria 
 
@@ -53,8 +53,10 @@ est_421(), est_brelan(), est_fiche(), est_suite(), est_nenette()
 
 - <u>distribution_des_jetons():</u> phase de distribution
 - <u>bataille():</u> phase finale jusqu’à épuisement des jetons
+- <u>bataille_ia():</u> tour complet de l'IA
 - <u>jouer_tour():</u> tour complet d'un joueur
 - <u>jouer():</u> lance le jeu complet
+- <u>Jouer_ia():</u> joue une partie en mode 1 joueur contre l'IA 
 
 ## <u>Liste des autres modules Pyton utilisés: </u>
 - random()

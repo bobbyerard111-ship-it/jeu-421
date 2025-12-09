@@ -21,6 +21,49 @@ def choix_ia(main_ia):
     if est_fiche(main_triee):
         return []  # Fiche (deux dés 1 identiques) = assez bon, on garde
     
+    if est_nenette(main_triee):
+        return [1]  # Nenette (2-2-1) = on relance le premier dé en espèrant obtenir un 4 pour le 421
+    
+    # ÉTAPE 1: Repérer si il y a 4-1 4-2 2-1 pour tenter le 421
+
+    nb4 = 0
+    nb2 = 0
+    nb1 = 0
+
+    i = 0
+    while i < 3:
+        if main_triee[i] == 4:
+            nb4 = 1
+        elif main_triee[i] == 2:
+            nb2 = 1
+        elif main_triee[i] == 1:
+            nb1 = 1
+        i = i + 1
+
+    if nb4 == 1 and nb2 == 1:
+        i = 0
+        while i < 3:
+            if main_triee[i] != 4 and main_triee[i] != 2:
+                return [i+1]
+            i = i + 1
+        return [3]
+
+    if nb4 == 1 and nb1 == 1:
+        i = 0
+        while i < 3:
+            if main_triee[i] != 4 and main_triee[i] != 1:
+                return [i+1]
+            i = i + 1
+
+    if nb2 == 1 and nb1 == 1:
+        i = 0
+        while i < 3:
+            if main_triee[i] != 2 and main_triee[i] != 1:
+                return [i+1]
+            i = i + 1 
+        return [3]
+
+    
     # ÉTAPE 2: Logique pour améliorer la main
     
     # Une paire est une bonne base pour tenter le brelan

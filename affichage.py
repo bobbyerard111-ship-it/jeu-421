@@ -1,6 +1,6 @@
 from noyau import *
 
-# Représentations graphiques des dés (de 1 à 6)
+# Représentations graphiques des dés.
 DE_1 = [
 "┌─────────┐",
 "│         │",
@@ -56,7 +56,7 @@ def afficher_main(main):
     """
     Entrée: une main de 3 dés sous forme de liste 
     Sortie: aucun, affichage des dés et infos textuelles sur la combinaison et la valeur
-    But: afficher graphiquement les 3 dés, leur combinaison et leur valeur
+    But: afficher graphiquement les 3 dés, leur combinaison et leur valeur, lignes par lignes.
     """
     de_1 = dessin_dés[main[0]-1]
     de_2 = dessin_dés[main[1]-1]

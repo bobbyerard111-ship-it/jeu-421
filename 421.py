@@ -93,22 +93,20 @@ def bataille(jetons_joueur1, jetons_joueur2):
         
         if gagnant == 1:
             jetons_a_perdre = valeur_main(main_joueur1)
-            jetons_recus = min(jetons_a_perdre, jetons_joueur2)
-            jetons_joueur2 += jetons_recus
-            jetons_joueur1 -= jetons_recus
-            print(f"\nJoueur 1 gagne ! Joueur 1 perd {jetons_recus} jeton(s).")
+            jetons_joueur2 += jetons_a_perdre
+            jetons_joueur1 -= jetons_a_perdre
+            print(f"\nJoueur 1 gagne ! Joueur 2 reprends {jetons_a_perdre} jeton(s).")
             joueur_commence = 2
         elif gagnant == 2:
             jetons_a_perdre = valeur_main(main_joueur2)
-            jetons_recus = min(jetons_a_perdre, jetons_joueur1)
-            jetons_joueur1 += jetons_recus
-            jetons_joueur2 -= jetons_recus
-            print(f"\nJoueur 2 gagne ! Joueur 2 perd {jetons_recus} jeton(s).")
+            jetons_joueur1 += jetons_a_perdre
+            jetons_joueur2 -= jetons_a_perdre
+            print(f"\nJoueur 2 gagne ! Joueur 2 reprends {jetons_a_perdre} jeton(s).")
             joueur_commence = 1
         else:
             print("\nÉgalité ! Aucun jeton distribué.")
     
-    if jetons_joueur1 == 0:
+    if jetons_joueur2 >= 11:
         return 1
     else:
         return 2
@@ -164,10 +162,10 @@ def bataille_ia(jetons_joueur1, jetons_ia):
             print("Main de l'Ordinateur:")
             afficher_main_ia(trier_main(main_ia))
             input()
-            relancer_main(main_ia, choix_ia(main_ia))
+            main_ia = relancer_main(main_ia, choix_ia(main_ia))
             afficher_main_ia(trier_main(main_ia))
             input()
-            relancer_main(main_ia, choix_ia(main_ia))
+            main_ia = relancer_main(main_ia, choix_ia(main_ia))
             afficher_main_ia(trier_main(main_ia))
         if joueur_commence == 2:
             print(f"--- Manche: Ordinateur ({jetons_ia} jetons) vs Joueur 1 ({jetons_joueur1} jetons) ---\n")
@@ -175,10 +173,10 @@ def bataille_ia(jetons_joueur1, jetons_ia):
             print("Main de l'Ordinateur:")
             afficher_main_ia(trier_main(main_ia))
             input()
-            relancer_main(main_ia, choix_ia(main_ia))
+            main_ia = relancer_main(main_ia, choix_ia(main_ia))
             afficher_main_ia(trier_main(main_ia))
             input()
-            relancer_main(main_ia, choix_ia(main_ia))
+            main_ia = relancer_main(main_ia, choix_ia(main_ia))
             afficher_main_ia(trier_main(main_ia))
 
             print("Au tour du Joueur 1:")
@@ -188,22 +186,20 @@ def bataille_ia(jetons_joueur1, jetons_ia):
         
         if gagnant == 1:
             jetons_a_perdre = valeur_main(main_joueur1)
-            jetons_recus = min(jetons_a_perdre, jetons_ia)
-            jetons_ia += jetons_recus
-            jetons_joueur1 -= jetons_recus
-            print(f"\nJoueur 1 gagne ! Joueur 1 perd {jetons_recus} jeton(s).")
+            jetons_ia += jetons_a_perdre
+            jetons_joueur1 -= jetons_a_perdre
+            print(f"\nJoueur 1 gagne ! Ordinateur reprends {jetons_a_perdre} jeton(s).")
             joueur_commence = 2
         elif gagnant == 2:
             jetons_a_perdre = valeur_main(main_ia)
-            jetons_recus = min(jetons_a_perdre, jetons_joueur1)
-            jetons_joueur1 += jetons_recus
-            jetons_ia -= jetons_recus
-            print(f"\nOrdinateur gagne ! Ordinateur perd {jetons_recus} jeton(s).")
+            jetons_joueur1 += jetons_a_perdre
+            jetons_ia -= jetons_a_perdre
+            print(f"\nOrdinateur gagne ! Joueur 1 reprends {jetons_a_perdre} jeton(s).")
             joueur_commence = 1
         else:
             print("\nÉgalité ! Aucun jeton distribué.")
     
-    if jetons_joueur1 == 0:
+    if jetons_ia >= 11:
         return 1
     else:
         return 2
@@ -235,4 +231,3 @@ if __name__ == "__main__":
         jouer()
     else:
         jouer_ia()
-

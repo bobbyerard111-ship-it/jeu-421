@@ -133,18 +133,27 @@ def est_nenette(main):
 
 def meilleure_main(main1, main2):
     """
-    Entrée: deux mains triées
-    Sortie: 1 si main1 gagne, 2 si main2 gagne, 0 si égalité
-    But: comparer les deux mains et déterminer le vainqueur
+    Entrée: deux mains triées (ordre décroissant)
+    Sortie:
+        1 si main1 gagne
+        2 si main2 gagne
+        0 si égalité parfaite
+    But : determiner quelle main est la meilleure selon les règles du jeu.
     """
-    if valeur_main(main1) > valeur_main(main2):
-        return 1    
-    elif valeur_main(main1) < valeur_main(main2):
-        return 2    
-    else:
-        for i in range(3):
-            if main1[i] > main2[i]:
-                return 1
-            elif main1[i] < main2[i]:
-                return 2
-        return 0
+    v1 = valeur_main(main1)
+    v2 = valeur_main(main2)
+
+    if v1 > v2:
+        return 1
+    if v1 < v2:
+        return 2
+
+    i = 0
+    while i < 3:
+        if main1[i] > main2[i]:
+            return 1
+        if main1[i] < main2[i]:
+            return 2
+        i += 1
+
+    return 0
