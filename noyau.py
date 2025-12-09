@@ -72,7 +72,7 @@ def trier_main(main):
     But: organiser les dés pour faciliter les vérifications
     """
     if main[0] < main[1]:
-        temp_memory = main[0]
+        temp_memory = main[0]   #variable temporaire/intermédiaire pour l'échange de valeurs
         main[0] = main[1]
         main[1] = temp_memory
     if main[1] < main[2]:
@@ -84,6 +84,7 @@ def trier_main(main):
         main[0] = main[1]
         main[1] = temp_memory
     return main
+
 
 def est_421(main):
     """

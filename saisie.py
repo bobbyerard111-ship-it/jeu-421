@@ -2,9 +2,9 @@ from noyau import *
 
 def lire_entier():
     """
-    Entrée: aucune
-    Sortie: l’entier s , une fois validé par le code
-    But: Vérifier l'entier entrée pour forcer la saisie d’un nombre entier
+    Entrée: aucune 
+    Sortie: retourner l'input s si c'est un entier, si le code le valide   
+    But: vérifier l'entier entrée pour forcer la saisie d'un entier 
     """
     valide = False
     while valide == False:
@@ -29,9 +29,7 @@ def lire_entier():
         if valide == False:
             print("Veuillez entrer un nombre entier : ")
 
-    return int(s)
-
-
+    
 def choisir_des_a_relancer():
     """
     Entrée: aucune

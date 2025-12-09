@@ -16,7 +16,7 @@ def choix_ia(main_ia):
         return []  # Ne rien relancer - Brelan est déjà très bon
     
     if est_suite(main_triee):
-        return []  # Ne rien relancer - Suite (1-2-3, 2-3-4, etc)
+        return []  # Ne rien relancer - Suite (1-2-3, 2-3-4, etc), dans le cas d'une suite avec comme dés 1-2-3 on ne prends pas le risque de tenter le 421
     
     if est_fiche(main_triee):
         return []  # Fiche (deux dés 1 identiques) = assez bon, on garde
@@ -33,7 +33,7 @@ def choix_ia(main_ia):
                 indices_a_relancer = []
                 for k in range(3):
                     if k != i and k != j:
-                        indices_a_relancer.append(k)
+                        indices_a_relancer.append(k+1)
                 return indices_a_relancer
             j = j + 1
         i = i + 1
@@ -63,9 +63,9 @@ def choix_ia(main_ia):
         indices_a_relancer = []
         for k in range(3):
             if k != meilleur_i and k != deuxieme_i:
-                indices_a_relancer.append(k)
+                indices_a_relancer.append(k+1)
         return indices_a_relancer
     
     # Stratégie 3: Si tous les dés sont petits (< 4), on relance tout pour avoir une chance
 
-    return [0, 1, 2]
+    return [1, 2, 3]
