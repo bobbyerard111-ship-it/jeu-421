@@ -147,14 +147,16 @@ def bataille_ia(jetons_joueur1, jetons_ia):
         print("Au tour du Joueur 1:")
         main_joueur1 = jouer_tour()
         
-        print("Au tour de l'Ordinateur:")
+        print(f"--- Manche: Ordinateur ({jetons_ia} jetons) vs Joueur 1 ({jetons_joueur1} jetons) ---\n")
         main_ia = trier_main(lancer_main())
         print("Main de l'Ordinateur:")
-        afficher_main(main_ia)
+        afficher_main_ia(main_ia)
+        input()
         relancer_main(main_ia, choix_ia(main_ia))
-        afficher_main(main_ia)
+        afficher_main_ia(main_ia)
+        input()
         relancer_main(main_ia, choix_ia(main_ia))
-        afficher_main(main_ia)
+        afficher_main_ia(main_ia)
 
         gagnant = meilleure_main(main_joueur1, main_ia)
         
@@ -186,7 +188,7 @@ def jouer_ia():
     print("Bienvenue dans le jeu du 421 ! Vous jouez contre l'ordinateur.")
     jetons_joueur1 = distribution_des_jetons(afficher=True)
     jetons_ia = 11 - jetons_joueur1
-    vainqueur =bataille_ia(jetons_joueur1, jetons_ia)
+    vainqueur = bataille_ia(jetons_joueur1, jetons_ia)
     if vainqueur == 1:
         print("Vous avez gagné !")
     else:

@@ -16,7 +16,7 @@ def choix_ia(main_ia):
         return []  # Ne rien relancer - Brelan est déjà très bon
     
     if est_suite(main_triee):
-        return []  # Ne rien relancer - Suite (1-2-3, 2-3-4, etc)
+        return []  # Ne rien relancer - Suite (1-2-3, 2-3-4, etc), dans le cas d'une suite avec comme dés 1-2-3 on ne prends pas le risque de tenter le 421
     
     if est_fiche(main_triee):
         return []  # Fiche (deux dés 1 identiques) = assez bon, on garde
