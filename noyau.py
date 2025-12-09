@@ -85,6 +85,7 @@ def trier_main(main):
         main[1] = temp_memory
     return main
 
+
 def est_421(main):
     """
     Entrée: une main triée
